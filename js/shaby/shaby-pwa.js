@@ -3,8 +3,8 @@ import Shaby_Utils from './shaby-utils.js?v=0.1';
 import Shaby_App_Lib from './shaby-app-lib.js?v=0.1';
 import Shaby_SPA_Router from './shaby-spa-router.js?v=0.1';
 import Shaby_Translator from './shaby-language.js?v=0.1';
-import Charter from './../classes/class.charter.js?v=0.1';
-import API from './../api.js?v=0.1';
+import Charter from '../classes/class.charter.js?v=0.1';
+import API from '../api.js?v=0.1';
 
 /**********************************************************************
  *     Class-Bundle for PWAs.

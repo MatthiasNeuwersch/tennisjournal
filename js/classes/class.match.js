@@ -1,5 +1,5 @@
 "use strict";
-import Player from '../classes/class.player.js?v=0.1';
+import Player from './class.player.js?v=0.1';
 
 export default class Match {
     constructor(match) {

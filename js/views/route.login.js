@@ -1,5 +1,5 @@
 "use strict";
-import Shaby_Route from './../shaby/shaby-spa-route.js?v=0.1';
+import Shaby_Route from '../shaby/shaby-spa-route.js?v=0.1';
 
 export default class LoginView extends Shaby_Route{
     constructor(slug, template){
