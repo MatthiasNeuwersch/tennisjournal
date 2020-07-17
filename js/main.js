@@ -11,4 +11,4 @@ let routes = [
     new LoginView("/login", "login"),
 ];
 let model = new Shaby_Model();
-const TennisJournal = new Shaby_PWA("https://tennisjournal.neuwersch.eu/", "templates", routes, model, {}, "de","en");
+const TennisJournal = new Shaby_PWA("https://tj.neuwersch.eu/", "templates", routes, model, {}, "de","en");

@@ -1,5 +1,5 @@
 <?php
-include("db_config.php");
+include("./../db_config.php");
 $connection = new mysqli($GLOBALS["servername"], $GLOBALS["username"], $GLOBALS["password"], $GLOBALS["dbname"]);
 if ($connection->connect_error)
     die("Connection failed: " . $connection->connect_error);
@@ -18,7 +18,6 @@ if(isset($_REQUEST["purpose"])) {
             break;
         default:
             die("Unknown Purpose: "+$_REQUEST["purpose"]);
-
     }
 }
 
