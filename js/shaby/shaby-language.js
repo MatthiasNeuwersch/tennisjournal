@@ -40,6 +40,24 @@ Shaby_Language.en = {
     yes: "Yes",
     no: "No",
     confirm_delete: "Do you really want to delete?",
+
+    //ADD MATCH
+    date : "Date",
+    matchtype : "Matchtype, Location",
+    itn_match : "ITN Match",
+    myITN : "My ITN",
+    player2 : "Opponent",
+    player2ITN: "Opponent ITN",
+    surface: "Surface",
+    Clay: "Sand",
+    Hard: "Hardcourt",
+    Carpet : "Carpet",
+    Grass : "Grass",
+    OtherSurface : "Other Surface",
+    balls : "Balltype",
+    set : "Set",
+    notes : "Notes",
+    submit : "Submit",
 };
 
 Shaby_Language.de = {
@@ -61,5 +79,23 @@ Shaby_Language.de = {
     yes: "Ja",
     no: "Nein",
     confirm_delete: "Möchten Sie wirklich löschen?",
+
+    //ADD MATCH
+    date : "Datum",
+    matchtype : "Matchtyp, Ort",
+    itn_match : "ITN gewertetes Match",
+    myITN : "Meine ITN",
+    player2 : "Gegner",
+    player2ITN: "Gegner ITN",
+    surface: "Belag",
+    Clay: "Sand",
+    Hard: "Hartplatz",
+    Carpet : "Teppich",
+    Grass : "Gras",
+    OtherSurface : "Anderer Belag",
+    balls : "Ballmarke",
+    set : "Satz",
+    notes : "Anmerkungen",
+    submit : "Absenden",
 
 };

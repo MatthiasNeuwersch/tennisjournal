@@ -30,6 +30,14 @@ export default class Shaby_Model {
         });
     }
 
+    addMatch(match){
+        return new Promise(resolve => {
+            window.Shaby.api.addMatch(match, function(data){
+                resolve(data);
+            });
+        });
+    }
+
     getPlayers() {
         let self = this;
         this.players = [];

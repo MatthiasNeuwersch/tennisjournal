@@ -21,6 +21,10 @@ export default class API {
         API.request("getMatches", JSON.stringify({id:id}), callback)
     }
 
+    addMatch(match, callback){
+        API.request("addMatch", JSON.stringify(match), callback)
+    }
+
     getPlayers(id, callback){
         API.request("getPlayers", JSON.stringify({id:id}), callback);
     }

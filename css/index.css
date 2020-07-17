@@ -15,8 +15,8 @@
   display: inline-block;
   padding: 3px;
   border-radius: 4px;
-  margin-right: 5px;
   
+  margin-right: 5px;
 }
 .match-preview .setResult.won {
   background-color: green;
@@ -26,4 +26,19 @@
 }
 .match-preview .setResult.draw {
   background-color: grey;
+}
+.add_match label {
+  display: block;
+  margin: 2px 0;
+}
+.add_match fieldset {
+  margin: 10px 0;
+}
+.button {
+  padding: 5px 15px;
+  background-color: wheat;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: brown;
 }

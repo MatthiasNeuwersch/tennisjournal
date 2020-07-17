@@ -13,6 +13,9 @@ if(isset($_REQUEST["purpose"])) {
         case "getMatches":
             getMatches($connection);
             break;
+        case "addMatch":
+            addMatch($connection);
+            break;
         case "getPlayers":
             getPlayers($connection);
             break;
@@ -39,6 +42,32 @@ function getMatches($connection){
         die(json_encode($matches->fetch_all(MYSQLI_ASSOC)));
     else
         die("No Matches found");
+}
+
+function addMatch($connection){
+    $data = json_decode($_REQUEST["data"]);
+    $data->date = "'".date("Y-m-d H:i:s", strtotime($data->date))."'";
+    $keys = ["owner", "date", "matchtype", "itn_match", "myITN","player2","player2ITN", "surface","balls","notes"];
+    $values = [$data->owner, $data->date, "'".($data->matchtype)."'", $data->itn_match, $data->myITN, $data->player2, $data->player2ITN, "'".$data->surface."'", "'".$data->balls."'", "'".$data->notes."'"];
+
+    for($i = 1; $i <= 5; $i++){
+        if(!empty($data->{"set".$i."Team1"})) {
+            $keys[] = "set" . $i . "Team1";
+            $keys[] = "set" . $i . "Team2";
+            $values[] = $data->{"set".$i."Team1"};
+            $values[] = $data->{"set".$i."Team2"};
+        }
+    }
+    $keys = join(", ", $keys);
+    $values = join (", ", $values);
+    $query = "INSERT INTO matches (".$keys.") values (".$values.");";
+    $match = $connection->query($query);
+    if($match)
+        die(json_encode($connection->insert_id));
+    else
+        die("NIX");
+//        die($query);
+
 }
 
 function getPlayers($connection){
