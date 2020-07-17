@@ -1,0 +1,8 @@
+{
+  "short_name": "schlaustrom_spwa",
+  "name": "Schlaustrom Autarkierechner",
+  "start_url": "/#/login",
+  "background_color": "#e58d10",
+  "theme_color": "#e58d10",
+  "display": "standalone"
+}

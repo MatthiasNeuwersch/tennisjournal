@@ -1,0 +1,29 @@
+.match-preview {
+  border: 1px solid;
+  padding: 7px;
+}
+.match-preview.won {
+  border-color: green;
+}
+.match-preview.lost {
+  border-color: red;
+}
+.match-preview.draw {
+  border-color: grey;
+}
+.match-preview .setResult {
+  display: inline-block;
+  padding: 3px;
+  border-radius: 4px;
+  margin-right: 5px;
+  
+}
+.match-preview .setResult.won {
+  background-color: green;
+}
+.match-preview .setResult.lost {
+  background-color: red;
+}
+.match-preview .setResult.draw {
+  background-color: grey;
+}

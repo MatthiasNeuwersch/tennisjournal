@@ -1,0 +1,32 @@
+@won: green;
+@lost: red;
+@draw: grey;
+
+.match-preview{
+  border: 1px solid;
+  padding: 7px;
+  &.won{
+    border-color: @won;
+  }
+  &.lost{
+    border-color: @lost;
+  }
+  &.draw{
+    border-color: @draw;
+  }
+  .setResult{
+    display: inline-block;
+    padding: 3px;
+    border-radius: 4px;
+    margin-right: 5px;
+    &.won{
+      background-color: @won;
+    }
+    &.lost{
+      background-color: @lost;
+    }
+    &.draw{
+      background-color: @draw;
+    }
+  }
+}
