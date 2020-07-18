@@ -11,8 +11,11 @@ body {
   background-size: cover;
   background-position: bottom center;
   background-repeat: no-repeat;
-  width: 50%;
+  width: 70%;
   box-sizing: border-box;
+}
+.match-preview.displaynone {
+  display: none;
 }
 .match-preview.Grass {
   background-image: url("../img/grasscourt.jpg");
@@ -39,7 +42,6 @@ body {
   font-weight: 700;
   cursor: pointer;
 }
-
 .match-preview .setResult {
   display: inline-block;
   padding: 3px 5px 0 5px;
@@ -50,6 +52,7 @@ body {
   background-color: #009f30;
   color: white;
 }
+
 .match-preview .setResult.lost {
   background-color: #ad0030;
   color: white;
@@ -93,7 +96,7 @@ body {
 .stats {
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  width: 70%;
 }
 .stats_element {
   padding: 10px;

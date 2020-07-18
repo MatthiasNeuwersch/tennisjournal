@@ -61,6 +61,8 @@
             </form>
         </div>
         <div class="matchStatsContainer"></div>
+        <label for="searchPlayer">Suche nach Spiel (Name, ITN, ITN-Differenz)</label>
+        <input type="text" id="searchPlayer" />
         <div class="recentMatchesContainer"></div>
     </div>
 </div>

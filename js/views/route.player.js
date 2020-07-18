@@ -30,11 +30,11 @@ export default class PlayerView extends Shaby_Route{
     }
 
     renderH2H(){
-        let wldRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID}]);
-        let clayWLDRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Clay"}]);
-        let carpetWLDRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Carpet"}]);
-        let hardcourtWLDRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Hard"}]);
-        let setWLDRatio = Match.getSetWLDRatio([{"key": "player2", "value":this.player.ID}]);
+        let wldRatio = Stats.getWLDRatio([{"key": "player2", "value":this.player.ID}]);
+        let clayWLDRatio = Stats.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Clay"}]);
+        let carpetWLDRatio = Stats.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Carpet"}]);
+        let hardcourtWLDRatio = Stats.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Hard"}]);
+        let setWLDRatio = Stats.getSetWLDRatio([{"key": "player2", "value":this.player.ID}]);
         let stats = $("<div class='stats'></div>");
         $(".player_container").append("<h2>Statistics</h2>").append(stats);
         stats.append(Stats.renderWLD("Head2Head", wldRatio));
@@ -42,6 +42,9 @@ export default class PlayerView extends Shaby_Route{
         stats.append(Stats.renderWLD("Clay-Matches", clayWLDRatio));
         stats.append(Stats.renderWLD("Carpet-Matches", carpetWLDRatio));
         stats.append(Stats.renderWLD("Hardcourt-Matches", hardcourtWLDRatio));
+        stats.append(Stats.renderSetWinPrediction([{"key": "player2", "value":this.player.ID}]));
+        stats.append(Stats.renderWinPrediction([{"key": "player2", "value":this.player.ID}]));
+        stats.append(Stats.renderWinPrediction([{"key": "player2", "value":this.player.ID}], true));
     }
 
     renderRecentGames(){

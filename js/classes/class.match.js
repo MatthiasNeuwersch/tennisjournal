@@ -18,7 +18,7 @@ export default class Match {
         let match_meta = $("<div class='match_meta'></div>");
         if(this.mode == "singles"){
             let opponent = $("<div class='opponent'></div>");
-            opponent.append(Player.getLinkedPlayername(this.player2, this.player2ITN));
+            opponent.append(Player.getLinkedPlayername(this.player2, this.myITN, this.player2ITN));
             match_meta.append(opponent);
         }else
             match_meta.append($("<h3>DOPPEL mit </h3>").append(Player.getLinkedPlayername(this.player4)));
@@ -98,62 +98,5 @@ export default class Match {
         classes.push(this.wonLostOrDraw());
         classes.push(this.surface);
         return classes.length ? " "+classes.join(" ") : "";
-    }
-
-    static getWLDRatio(filter = false){
-        let ratio = {
-            won: 0,
-            lost: 0,
-            draw: 0
-        };
-        for(const match of window.Shaby.model.matches){
-            if(!filter)
-                ratio[match.wonLostOrDraw()]++;
-            else{
-                let filter_applies = true;
-                for(const single_filter of filter){
-                    if(match[single_filter.key] != single_filter.value){
-                        filter_applies = false;
-                        break;
-                    }
-                }
-                if(filter_applies)
-                    ratio[match.wonLostOrDraw()]++;
-            }
-        }
-        return ratio;
-    }
-
-    static getSetWLDRatio(filter = false){
-        let ratio = {
-            won: 0,
-            lost: 0,
-            draw: 0
-        };
-        for(const match of window.Shaby.model.matches){
-            if(!filter){
-                for(let i = 1; i <= 5; i++) {
-                    if (match["set" + i + "Team1"] == null)
-                        break;
-                    ratio[match.setWonLostOrDraw(i)]++;
-                }
-            }else{
-                let filter_applies = true;
-                for(const single_filter of filter){
-                    if(match[single_filter.key] != single_filter.value){
-                        filter_applies = false;
-                        break;
-                    }
-                }
-                if(filter_applies){
-                    for(let i = 1; i <= 5; i++) {
-                        if (match["set" + i + "Team1"] == null)
-                            break;
-                        ratio[match.setWonLostOrDraw(i)]++;
-                    }
-                }
-            }
-        }
-        return ratio;
     }
 }

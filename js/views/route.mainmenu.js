@@ -72,15 +72,18 @@ export default class MainmenuView extends Shaby_Route{
         recentMatchesContainer.empty();
         for(const match of window.Shaby.model.matches)
             recentMatchesContainer.append(match.renderMatch());
+        $("#searchPlayer").unbind("keyup").on("keyup", function(){
+            window.Shaby.utils.search($(this).val(), $(".match-preview"));
+        });
     }
 
     static renderStats(){
-        let wldRatio = Match.getWLDRatio();
-        let itnWLDRatio = Match.getWLDRatio([{"key":"itn_match", "value": 1}]);
-        let clayWLDRatio = Match.getWLDRatio([{"key": "surface", "value":"Clay"}]);
-        let carpetWLDRatio = Match.getWLDRatio([{"key":"surface", "value":"Carpet"}]);
-        let hardcourtWLDRatio = Match.getWLDRatio([{"key":"surface", "value":"Hard"}]);
-        let setWLDRatio = Match.getSetWLDRatio();
+        let wldRatio = Stats.getWLDRatio();
+        let itnWLDRatio = Stats.getWLDRatio([{"key":"itn_match", "value": 1}]);
+        let clayWLDRatio = Stats.getWLDRatio([{"key": "surface", "value":"Clay"}]);
+        let carpetWLDRatio = Stats.getWLDRatio([{"key":"surface", "value":"Carpet"}]);
+        let hardcourtWLDRatio = Stats.getWLDRatio([{"key":"surface", "value":"Hard"}]);
+        let setWLDRatio = Stats.getSetWLDRatio();
         let stats = $("<div class='stats'></div>");
         $(".matchStatsContainer").append("<h2>Statistics</h2>").append(stats);
         stats.append(Stats.renderWLD("Matches", wldRatio));

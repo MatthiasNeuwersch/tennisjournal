@@ -163,17 +163,11 @@ class Shaby_Utils{
         return string;
     }
 
-    search(searchtag, selector, data){
-        $('.displaynone').removeClass("displaynone");
+    search(searchtag, selector){
         selector.each(function(index, element){
-            let visible = false;
-            for(let i = 0; i < data.length; i++){
-                if($(element).data(data[i]).toString().toLowerCase().includes(searchtag.toString().toLowerCase())){
-                    visible = true;
-                    break;
-                }
-            }
-            if (!visible)
+            if($(element).find(".player").text().toLowerCase().includes(searchtag.toLowerCase()))
+                $(element).removeClass("displaynone");
+            else
                 $(element).addClass("displaynone");
         });
     };
