@@ -14,20 +14,23 @@ export default class Match {
     }
 
     renderMatch(){
-        let match = $("<div class='match-preview"+this.getMatchAttributesAsCssClasses()+"' data-match-id='"+this.id+"'></div>");
+        let match = $("<div class='match-preview"+this.getMatchAttributesAsCssClasses()+"' data-match-id='"+this.ID+"'></div>");
+        let match_meta = $("<div class='match_meta'></div>");
         if(this.mode == "singles"){
             let opponent = $("<div class='opponent'></div>");
-            opponent.append(Player.getLinkedPlayername(this.player2));
-            match.append(opponent);
-        }
-        match.append(this.getHTMLFormattedMatchresult());
-        match.append(this.matchtype);
+            opponent.append(Player.getLinkedPlayername(this.player2, this.player2ITN));
+            match_meta.append(opponent);
+        }else
+            match_meta.append($("<h3>DOPPEL mit </h3>").append(Player.getLinkedPlayername(this.player4)));
+        match_meta.append(this.getHTMLFormattedMatchresult());
+        match_meta.append(this.matchtype);
         let matchDetails = $("<div class='match_details'></div>");
-        matchDetails.append("<div class='match_date'>"+this.date+"</div>");
+        matchDetails.append("<div class='match_date'>"+this.date.slice(0,10)+"</div>");
         if(this.balls != null)
             matchDetails.append("<div class='match_balls'>"+this.balls+"</div>");
         if(this.notes != null)
             matchDetails.append("<div class='notes'>"+this.notes+"</div>");
+        match.append(match_meta);
         match.append(matchDetails);
         return match;
     }
@@ -107,27 +110,50 @@ export default class Match {
             if(!filter)
                 ratio[match.wonLostOrDraw()]++;
             else{
-                if(match[filter.key] == filter.value)
+                let filter_applies = true;
+                for(const single_filter of filter){
+                    if(match[single_filter.key] != single_filter.value){
+                        filter_applies = false;
+                        break;
+                    }
+                }
+                if(filter_applies)
                     ratio[match.wonLostOrDraw()]++;
             }
         }
         return ratio;
     }
 
-    static getSetWLDRatio(){
+    static getSetWLDRatio(filter = false){
         let ratio = {
             won: 0,
             lost: 0,
             draw: 0
         };
         for(const match of window.Shaby.model.matches){
-            for(let i = 1; i <= 5; i++) {
-                if (match["set" + i + "Team1"] == null)
-                    break;
-                ratio[match.setWonLostOrDraw(i)]++;
+            if(!filter){
+                for(let i = 1; i <= 5; i++) {
+                    if (match["set" + i + "Team1"] == null)
+                        break;
+                    ratio[match.setWonLostOrDraw(i)]++;
+                }
+            }else{
+                let filter_applies = true;
+                for(const single_filter of filter){
+                    if(match[single_filter.key] != single_filter.value){
+                        filter_applies = false;
+                        break;
+                    }
+                }
+                if(filter_applies){
+                    for(let i = 1; i <= 5; i++) {
+                        if (match["set" + i + "Team1"] == null)
+                            break;
+                        ratio[match.setWonLostOrDraw(i)]++;
+                    }
+                }
             }
         }
         return ratio;
     }
-
 }

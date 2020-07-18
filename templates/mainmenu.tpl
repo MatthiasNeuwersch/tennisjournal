@@ -12,7 +12,7 @@
                 <label for="am_date"><%>date<%></label>
                 <input type="datetime-local" id="am_date"/>
                 <label for="am_matchtype"><%>matchtype<%></label>
-                <input type="text" id="am_matchtype"/>
+                <input type="text" value="Freies Spiel, Post SV", id="am_matchtype"/>
                 <label for="am_itn_match"><%>itn_match<%></label>
                 <input type="checkbox" id="am_itn_match"/>
                 <label for="am_myITN"><%>myITN<%></label>
@@ -33,7 +33,7 @@
                     <option value="Other"><%>OtherSurface<%></option>
                 </select>
                 <label for="am_balls"><%>balls<%></label>
-                <input type="text" id="am_balls" placeholder="Babolat Team"/>
+                <input type="text" id="am_balls" value="Babolat Team" placeholder="Babolat Team"/>
                 <fieldset id="am_set_results">
                     <label for="am_set1Team1"><%>set<%> 1</label>
                     <input type="number" id="am_set1Team1"/>

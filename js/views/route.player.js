@@ -1,5 +1,7 @@
 "use strict";
 import Shaby_Route from '../shaby/shaby-spa-route.js?v=0.1';
+import Match from '../classes/class.match.js?v=0.1';
+import Stats from '../classes/class.stats.js?v=0.1';
 
 export default class PlayerView extends Shaby_Route{
     constructor(slug, template){
@@ -8,14 +10,13 @@ export default class PlayerView extends Shaby_Route{
     }
 
     init(){
-
-        if(!window.Shaby.utils.getCookie("user") || window.Shaby.utils.isEmpty(window.Shaby.model.players))
+        if(!window.Shaby.utils.getCookie("user"))
             window.location.hash = "/login";
         else if ((window.Shaby.utils.isEmpty(window.Shaby.getParams["id"])))
             window.location.hash = "/";
         else{
             this.player = window.Shaby.model.getPlayer(window.Shaby.getParams["id"]);
-            if(this.player == false)
+            if(this.player == undefined)
                 window.location.hash = "/";
             else
                 this.renderPlayersview();
@@ -23,6 +24,31 @@ export default class PlayerView extends Shaby_Route{
     };
 
     renderPlayersview(){
-        $(".player_container").append("<h2>"+this.player.firstname+" "+this.player.lastname+"</h2>");
+        $("#headercontent h1").text(this.player.firstname+" "+this.player.lastname);
+        this.renderH2H();
+        this.renderRecentGames();
+    }
+
+    renderH2H(){
+        let wldRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID}]);
+        let clayWLDRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Clay"}]);
+        let carpetWLDRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Carpet"}]);
+        let hardcourtWLDRatio = Match.getWLDRatio([{"key": "player2", "value":this.player.ID},{"key": "surface", "value":"Hard"}]);
+        let setWLDRatio = Match.getSetWLDRatio([{"key": "player2", "value":this.player.ID}]);
+        let stats = $("<div class='stats'></div>");
+        $(".player_container").append("<h2>Statistics</h2>").append(stats);
+        stats.append(Stats.renderWLD("Head2Head", wldRatio));
+        stats.append(Stats.renderWLD("Sets", setWLDRatio));
+        stats.append(Stats.renderWLD("Clay-Matches", clayWLDRatio));
+        stats.append(Stats.renderWLD("Carpet-Matches", carpetWLDRatio));
+        stats.append(Stats.renderWLD("Hardcourt-Matches", hardcourtWLDRatio));
+    }
+
+    renderRecentGames(){
+        for(const match of window.Shaby.model.matches){
+            if(match["player2"] == this.player.ID)
+                $(".player_container").append(match.renderMatch());
+
+        }
     }
 }

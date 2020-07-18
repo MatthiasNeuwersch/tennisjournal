@@ -1,31 +1,75 @@
+body {
+  font-family: 'Varta', sans-serif;
+}
 .match-preview {
   border: 1px solid;
   padding: 7px;
+  margin: 10px 0;
+  align-items: center;
+  border-radius: 3px;
+  border-color: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  width: 50%;
+  box-sizing: border-box;
 }
-.match-preview.won {
-  border-color: green;
+.match-preview.Grass {
+  background-image: url("../img/grasscourt.jpg");
 }
-.match-preview.lost {
-  border-color: red;
+.match-preview.Clay {
+  background-image: url("../img/claycourt.jpg");
 }
-.match-preview.draw {
-  border-color: grey;
+.match-preview.Hard {
+  background-image: url("../img/hardcourt.jpg");
 }
+.match-preview.Carpet {
+  background-image: url("../img/carpetcourt.jpg");
+}
+.match-preview.won .player {
+  color: #009f30;
+}
+.match-preview.lost .player {
+  color: #ad0030;
+}
+.match-preview.draw .player {
+  color: grey;
+}
+.match-preview .player {
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .match-preview .setResult {
   display: inline-block;
-  padding: 3px;
+  padding: 3px 5px 0 5px;
   border-radius: 4px;
-  
   margin-right: 5px;
 }
 .match-preview .setResult.won {
-  background-color: green;
+  background-color: #009f30;
+  color: white;
 }
 .match-preview .setResult.lost {
-  background-color: red;
+  background-color: #ad0030;
+  color: white;
 }
 .match-preview .setResult.draw {
   background-color: grey;
+}
+.match-preview .match_meta {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 4px 10px;
+}
+.match-preview .match_details {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 10px 0;
+  padding: 4px 10px;
+}
+.match-preview .match_details div {
+  margin: 10px;
 }
 .add_match label {
   display: block;
@@ -41,4 +85,34 @@
 }
 .button:hover {
   background-color: brown;
+}
+.share .notes {
+  color: transparent;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.stats_element {
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 4px;
+}
+.stats_element h4 {
+  margin: 0;
+}
+.stats_element.won h4 {
+  color: #009f30;
+}
+.stats_element.lost h4 {
+  color: #ad0030;
+}
+.stats_element.draw h4 {
+  color: grey;
+}
+.match_date {
+  min-width: 80px;
 }

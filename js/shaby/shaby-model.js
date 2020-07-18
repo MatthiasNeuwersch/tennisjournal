@@ -23,8 +23,10 @@ export default class Shaby_Model {
         this.matches = [];
         return new Promise(resolve => {
             window.Shaby.api.getMatches(this.user.id, function(matches){
-                for(const match of JSON.parse(matches))
-                    self.matches.push(new Match(match));
+                if(matches!= "No Matches found"){
+                    for(const match of JSON.parse(matches))
+                        self.matches.push(new Match(match));
+                }
                 resolve();
             });
         });

@@ -15,7 +15,7 @@ export default class LoginView extends Shaby_Route{
 
     handleSubmit(e){
         e.preventDefault();
-        window.Shaby.api.login($("#login-username").val(), $("#login-password").val(), LoginView.loginCallback);
+        window.Shaby.api.login($("#login-username").val().toLowerCase(), $("#login-password").val(), LoginView.loginCallback);
     };
 
     static loginCallback(response){

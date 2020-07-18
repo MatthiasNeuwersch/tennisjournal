@@ -1,6 +1,7 @@
 "use strict";
 import Shaby_Route from '../shaby/shaby-spa-route.js?v=0.1';
 import Match from '../classes/class.match.js?v=0.1';
+import Stats from "../classes/class.stats.js?v=0.1";
 
 export default class MainmenuView extends Shaby_Route{
     constructor(slug, template){
@@ -27,7 +28,7 @@ export default class MainmenuView extends Shaby_Route{
     static activateMatchinputMask(){
         window.Shaby.utils.setDatetimeLocalToNow($("#am_date"));
         for(const player of window.Shaby.model.players)
-            $("#am_player2").append("<option value='"+player.ID+"'>"+player.firstname+" "+player.lastname+"</option>");
+            $("#am_player2").append("<option value='"+player.ID+"'>"+player.lastname+", "+player.firstname+"</option>");
 
         $("#am_submit").unbind("click").on("click",function(){
             let match = {
@@ -40,7 +41,7 @@ export default class MainmenuView extends Shaby_Route{
                 player2ITN : $("#am_player2ITN").val(),
                 surface : $("#am_surface").val() || "",
                 balls : $("#am_balls").val() || "",
-                notes : $("#notes").val() || "",
+                notes : $("#am_notes").val() || "",
             };
             for(let i = 1; i <= 5; i++) {
                 if ($("#am_set" + i + "Team1").val() == "" )
@@ -50,12 +51,14 @@ export default class MainmenuView extends Shaby_Route{
             }
 
             window.Shaby.model.addMatch(match).then(function(data){
-                console.log(data);
                 if(data != "NIX"){
-                    $("form.add_match input").val("");
+                    $("form.add_match input, #am_notes").val("");
+                    $("#am_balls").val("Babolat Team");
+                    $("#am_matchtype").val("Freies Spiel, Post SV");
                     $("#am_itn_match").prop("checked", false);
                     $("#am_surface").val($("#am_surface  option:first").val());
                     $("#am_player2").val($("#am_player2 option:first").val());
+                    window.Shaby.utils.setDatetimeLocalToNow($("#am_date"));
                 }
 
                 //TODO: IF SUCCESS, empty, Else: notify!
@@ -73,14 +76,18 @@ export default class MainmenuView extends Shaby_Route{
 
     static renderStats(){
         let wldRatio = Match.getWLDRatio();
-        let itnWLDRatio = Match.getWLDRatio({"key":"itn_match", "value": 1});
-        let clayWLDRatio = Match.getWLDRatio({"key": "surface", "value":"Clay"});
-        let carpetWLDRatio = Match.getWLDRatio({"key":"surface", "value":"Carpet"});
+        let itnWLDRatio = Match.getWLDRatio([{"key":"itn_match", "value": 1}]);
+        let clayWLDRatio = Match.getWLDRatio([{"key": "surface", "value":"Clay"}]);
+        let carpetWLDRatio = Match.getWLDRatio([{"key":"surface", "value":"Carpet"}]);
+        let hardcourtWLDRatio = Match.getWLDRatio([{"key":"surface", "value":"Hard"}]);
         let setWLDRatio = Match.getSetWLDRatio();
-        $(".matchStatsContainer").append("<h3>Matches</h3><p>W: "+wldRatio.won+" | L: "+wldRatio.lost+" | D: "+wldRatio.draw+"</p>");
-        $(".matchStatsContainer").append("<h3>Sets</h3><p>W: "+setWLDRatio.won+" | L: "+setWLDRatio.lost+" | D: "+setWLDRatio.draw+"</p>");
-        $(".matchStatsContainer").append("<h3>ITN-Matches</h3><p>W: "+itnWLDRatio.won+" | L: "+itnWLDRatio.lost+" | D: "+itnWLDRatio.draw+"</p>");
-        $(".matchStatsContainer").append("<h3>Clay-Matches</h3><p>W: "+clayWLDRatio.won+" | L: "+clayWLDRatio.lost+" | D: "+clayWLDRatio.draw+"</p>");
-        $(".matchStatsContainer").append("<h3>Carpet-Matches</h3><p>W: "+carpetWLDRatio.won+" | L: "+carpetWLDRatio.lost+" | D: "+carpetWLDRatio.draw+"</p>");
+        let stats = $("<div class='stats'></div>");
+        $(".matchStatsContainer").append("<h2>Statistics</h2>").append(stats);
+        stats.append(Stats.renderWLD("Matches", wldRatio));
+        stats.append(Stats.renderWLD("Sets", setWLDRatio));
+        stats.append(Stats.renderWLD("ITN-Matches", itnWLDRatio));
+        stats.append(Stats.renderWLD("Clay-Matches", clayWLDRatio));
+        stats.append(Stats.renderWLD("Carpet-Matches", carpetWLDRatio));
+        stats.append(Stats.renderWLD("Hardcourt-Matches", hardcourtWLDRatio));
     }
 }

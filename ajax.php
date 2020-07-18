@@ -67,12 +67,11 @@ function addMatch($connection){
     else
         die("NIX");
 //        die($query);
-
 }
 
 function getPlayers($connection){
     $data = json_decode($_REQUEST["data"]);
-    $matches = $connection->query("SELECT * from players WHERE owner = '".$data->id."'");
+    $matches = $connection->query("SELECT * from players WHERE owner = '".$data->id."' OR oetv_license IS NOT NULL ORDER BY lastname, firstname");
     if($matches->num_rows>0)
         die(json_encode($matches->fetch_all(MYSQLI_ASSOC)));
     else

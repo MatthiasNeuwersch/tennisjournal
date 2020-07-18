@@ -5,14 +5,14 @@ export default class Player {
         Object.assign(this, player);
     }
 
-    getLinkedPlayername(){
+    getLinkedPlayername(itn){
         let self = this;
-        return ($("<div class='player "+this.sex+"'>"+this.firstname+" "+this.lastname+"</div>").on("click", function(){
+        return ($("<div class='player "+this.sex+"'>"+this.firstname+" "+this.lastname+" ("+itn+")</div>").on("click", function(){
             window.location.hash = "/player?id="+self.ID;
         }));
     }
 
-    static getLinkedPlayername(id){
-        return(window.Shaby.model.getPlayer(id).getLinkedPlayername());
+    static getLinkedPlayername(id, itn){
+        return(window.Shaby.model.getPlayer(id).getLinkedPlayername(itn));
     }
 }

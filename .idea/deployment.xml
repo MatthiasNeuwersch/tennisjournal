@@ -1,50 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="tennisjournal">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Tennisjournal_neuwersch_mittwald">
     <serverData>
-      <paths name="AppSepp Live">
+      <paths name="AppSepp">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="CADPoint - Mittwald">
+      <paths name="CADpoint - Mittwald">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Edis - Kneso">
+      <paths name="Dr. Prager (Kundin Tanja Linke) World4you">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="FleetscanPWA">
+      <paths name="F10 Sportfabrik">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Fleetscan_Git">
+      <paths name="Fairysales_Mittwald">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Fridas - Mittwald">
+      <paths name="Fleetscan_Dev">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Frischluft_Mittwald">
+      <paths name="Fleetscan_Staging">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Frischluft - Mittwald">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -65,14 +72,28 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Liebesgefühl">
+      <paths name="LINDE: Fleetscan Live">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Liebesgefühl_Mittwald">
+      <paths name="Liebesgefuehl_Mittwald">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Liebesgefühl - Edis">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Linde: AppSepp Live">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -86,28 +107,7 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Lukas Kronsteiner">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Neuwersch_Mittwald">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Schachinger_mittwald">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Schlaustrom_Autarkie">
+      <paths name="Neuwersch">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -121,14 +121,28 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Service_Git">
+      <paths name="Shaby Live">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Tutora">
+      <paths name="Tanja Linke - Mittwald">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Tennisjournal_neuwersch_mittwald">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Volleyball Neuhofen">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
@@ -142,10 +156,10 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="tennisjournal">
+      <paths name="depr AppSepp - Mittwald">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
